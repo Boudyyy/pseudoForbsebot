@@ -15,6 +15,22 @@ def start(m):
                      reply_markup=keyboard)
 
 
+@bot.message_handler(commands=["source"])
+def source(m):
+    msg = bot.send_message(m.chat.id,
+                           'Here are the websites we have used:')
+    bot.send_message(m.chat.id,
+                     '[Forbes](https://www.forbes.com)\n'
+                     '[Chempionat](https://www.championat.com/lifestyle/'
+                     'article-4032517-samye-bogatye-sportsmeny-v-istorii-rejting-'
+                     'dzhordan-federer-ronaldu-shumaher.html)\n'
+                     '[Sport.24](https://sport.24tv.ua/ru/top_10_samyh_bogatyh_bokserov_mira_mister'
+                     '_dengi_zolotoj_paren_klichko_i_drugie_n1024218)\n'
+                     '[Спорт-сегодня](https://sport.segodnya.ua/sport/basketball/'
+                     'samye-bogatye-basketbolisty-2018-goda-sostavlen-reyting-1138652.html)'
+                     , parse_mode='Markdown')
+
+
 @bot.message_handler(content_types=['text'])
 def mainmen(m):
     if m.text.lower() == 'main menu':
@@ -30,71 +46,75 @@ def mainmen(m):
         keyboard = types.ReplyKeyboardMarkup(True)
         keyboard.row('Alice Walton', 'Francoise B. Meyers', 'Mackenzie Bezos')
         keyboard.row('Jacqueline Mars', 'Yang Huiyan', 'Julia Koch')
-        keyboard.row('Susanne Klatten', 'Laurene Powell', 'Zhong Huizuan')
-        keyboard.row('Main menu', 'Gina Rinehart')
+        keyboard.row('Susanne Klatten', 'Laurene Powell', 'Zhong Huizuan', 'Gina Rinehart')
+        keyboard.row('Main menu')
         bot.send_message(m.chat.id,
-                         '''1. *Alice Walton* $54.4B 
-2. *Francoise Bettencourt Meyers & family* $48.9B
-3. *Julia Koch* $38.2B
-4. *Mackenzie Bezos* $36B
-5. *Jacqueline Mars* $24.7B
-6. *Yang Huiyan* $20.3B
-7. *Susanne Klatten* $16.8B
-8. *Laurene Powell* $16.4B
-9. *Zhong Huizuan* $14.6B
-10. *Gina Rinehart* $13.1B
-
-    _Note: information provided in screenshots (net-worth, age, etc.) may be no more actual, but what is written, is the newest._''',
+                         '1. *Alice Walton* $54.4B\n'
+                         '2. *Francoise Bettencourt Meyers & family* $48.9B\n'
+                         '3. *Julia Koch* $38.2B\n'
+                         '4. *Mackenzie Bezos* $36B\n'
+                         '5. *Jacqueline Mars* $24.7B\n'
+                         '6. *Yang Huiyan* $20.3B\n'
+                         '7. *Susanne Klatten* $16.8B\n'
+                         '8. *Laurene Powell* $16.4B\n'
+                         '9. *Zhong Huizuan* $14.6B\n'
+                         '10. *Gina Rinehart* $13.1B\n'
+                         '_Note: information provided in screenshots (net-worth, age, etc.) '
+                         'may be no more actual, but what is written, is the newest._,',
                          parse_mode='Markdown', reply_markup=keyboard)
     elif m.text.lower() == 'alice walton':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12jz3.png')
         bot.send_message(m.chat.id,
-                         '''Age *71*
-Source of wealth *Walmart*
-Self-made score *1*
-Philantrophy score *2*
-Residence *Fort Worth, Texas*
-Citizenship *USA*
-Education *Bachelor of Arts/Science, Trinity University*''',
+                         'Age *71\n'
+                         'Source of wealth [Walmart](https://www.walmart.com) \n'
+                         'Self-made score *1*\n'
+                         'Philantrophy score *2*\n'
+                         'Residence *Fort Worth, Texas*\n'
+                         'Citizenship *USA*\n'
+                         'Education *Bachelor of Arts/Science,'
+                         ' Trinity University*',
                          parse_mode='Markdown')
     elif m.text.lower() == 'francoise b. meyers':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12l17.png')
         bot.send_message(m.chat.id,
-                         '''Age *67*
-Source of wealth *L'Oreal*
-Residence *Paris, France*
-Citizenship *France*''',
+                         'Age *67*\n'
+                         'Source of wealth '
+                         '[L\'Oreal](https://www.loreal.com/fr/)\n'
+                         'Residence *Paris, France*\n'
+                         'Citizenship *France*',
                          parse_mode='Markdown')
     elif m.text.lower() == 'julia koch':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12lxh.png')
         bot.send_message(m.chat.id,
-                         '''Age *58*
-Source of wealth *Koch Industries*
-Self-made score *1*
-Philantrophy score *2*
-Residence *New York*
-Citizenship *USA*''',
+                         'Age *58*\n'
+                         'Source of wealth [Koch Industries]'
+                         '(https://www.kochind.com)\n'
+                         'Self-made score *1*\n'
+                         'Philantrophy score *2*\n'
+                         'Residence *New York*\n'
+                         'Citizenship *USA*',
                          parse_mode='Markdown')
     elif m.text.lower() == 'mackenzie bezos':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12mhx.png')
         bot.send_message(m.chat.id,
-                         '''Age *50*
-Source of wealth *Amazon*
-Self-made score *3*
-Philantrophy score *2*
-Residence *Seattle, Washington*
-Citizenship *USA*
-Education *Bachelor of Arts/Science, Princeton University*''',
+                         'Age *50*\n'
+                         'Source of wealth [Amazon]'
+                         '(https://www.amazon.com)\n'
+                         'Self-made score *3*\n'
+                         'Philantrophy score *2*\n'
+                         'Residence *Seattle, Washington*\n'
+                         'Citizenship *USA*\n'
+                         'Education *Bachelor of Arts/Science, Princeton University*',
                          parse_mode='Markdown')
     elif m.text.lower() == 'jacqueline mars':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12n3l.png')
         bot.send_message(m.chat.id,
-                         '''Age *81*
-Source of wealth *candy, pet food*
-Self-made score *2*
-Residence *The Plains, Virginia*
-Citizenship *USA*
-Education *Bachelor of Arts/Science, Bryn Mawr College*''',
+                         'Age *81*\n'
+                         'Source of wealth *candy, pet food*\n'
+                         'Self-made score *2*\n'
+                         'Residence *The Plains, Virginia*\n'
+                         'Citizenship *USA*\n'
+                         'Education *Bachelor of Arts/Science, Bryn Mawr College*',
                          parse_mode='Markdown')
     elif m.text.lower() == 'yang huiyan':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12np2.png')
@@ -109,39 +129,42 @@ Education *Bachelor of Arts/Science, Ohio State University*''',
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12oct.png')
         bot.send_message(m.chat.id,
                          '''Age *58*
-Source of wealth *BMW, pharmaceuticals*
+Source of wealth [BMW](https://www.bmw.com/de), *pharmaceuticals*
 Residence *Bad Homburg, Germany*
 Citizenship *Germany*
-Education *Master of Business Administration, 
+Education *Master of Business Administration,
 International Institute for Management and Development*''',
                          parse_mode='Markdown')
     elif m.text.lower() == 'laurene powell':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12p5e.png')
         bot.send_message(m.chat.id,
-                         '''Age *57*
-Source of wealth *Apple, Disney*
-Self-made score *2*
-Philantrophy score *1*
-Residence *Palo Alto, California*
-Citizenship *USA*
-Education *Master of Business Administration, Stanford Graduate School of Business; 
-Bachelor of Arts/Science, University of Pennsylvania, The Wharton School*''',
+                         'Age *57*\n'
+                         'Source of wealth [Apple](https://www.apple.com), '
+                         '[Disney](https://www.disney.com)\n'
+                         'Self-made score *2*\n'
+                         'Philantrophy score *1*\n'
+                         'Residence *Palo Alto, California*\n'
+                         'Citizenship *USA*\n'
+                         'Education *Master of Business Administration, '
+                         'Stanford Graduate School of Business;\n'
+                         'Bachelor of Arts/Science, University of '
+                         'Pennsylvania, The Wharton School*',
                          parse_mode='Markdown')
     elif m.text.lower() == 'zhong huizuan':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12q2x.png')
         bot.send_message(m.chat.id,
-                         '''Age *59*
-Source of wealth *pharmaceuticals, Self Made*
-Residence *Shanghai, China*
-Citizenship *China*''',
+                         'Age *59*\n'
+                         'Source of wealth *pharmaceuticals, Self Made*\n'
+                         'Residence *Shanghai, China*\n'
+                         'Citizenship *China*',
                          parse_mode='Markdown')
     elif m.text.lower() == 'gina rinehart':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w12qn0.png')
         bot.send_message(m.chat.id,
-                         '''Age *66*
-Source of wealth *mining*
-Residence *Perth, Australia*
-Citizenship *Australia*''',
+                         'Age *66*\n'
+                         'Source of wealth *mining*\n'
+                         'Residence *Perth, Australia*\n'
+                         'Citizenship *Australia*',
                          parse_mode='Markdown')
 
     elif m.text.lower() == 'world\'s billionaires':
@@ -151,17 +174,20 @@ Citizenship *Australia*''',
         keyboard.row('Warren Buffet', 'Larry Elisson', 'Larry Page', 'Mukesh Ambani')
         keyboard.row('Main menu')
         bot.send_message(m.chat.id,
-                         '''1. *Jeff Bezos* $182.2B 
-2. *Bernard Arnault & family* $146.5B
-3. *Elon Musk* $136.9B
-4. *Bill Gates* $118.8B
-5. *Mark Zuckergerg* $100.5B
-6. *Waren Buffet* $86.6B
-7. *Larry Elisson* $82.4B
-8. *Larry Page* $78.3B
-9. *Mukesh Ambani* $76.4B
-10. *Sergei Brin* $76.0B''',
+                         '''1. [Jeff Bezos](https://www.forbes.com/profile/jeff-bezos/?list=rtb/&sh=512e93ce1b23) *$182.2B*
+2. [Bernard Arnault & family](https://www.forbes.com/profile/bernard-arnault/?list=rtb/&sh=23f26c4e66fa) *$146.5B*
+3. [Elon Musk](https://www.forbes.com/profile/elon-musk/?list=rtb/&sh=7752702e7999) *$136.9B*
+4. [Bill Gates](https://www.forbes.com/profile/bill-gates/?list=rtb/&sh=50c27be9689f) *$118.8B*
+5. [Mark Zuckergerg](https://www.forbes.com/profile/mark-zuckerberg/?list=rtb/&sh=758286c93e06) *$100.5B*
+6. [Waren Buffet](https://www.forbes.com/profile/warren-buffett/?list=rtb/&sh=791294d04639) *$86.6B*
+7. [Larry Elisson](https://www.forbes.com/profile/larry-ellison/?list=rtb/&sh=3f92999924c2) *$82.4B*
+8. [Larry Page](https://www.forbes.com/profile/larry-page/?list=rtb/&sh=3bf29df57893) *$78.3B*
+9. [Mukesh Ambani](https://www.forbes.com/profile/mukesh-ambani/?list=rtb/&sh=68a34c11214c) *$76.4B*
+10. [Sergei Brin](https://www.forbes.com/profile/sergey-brin/?list=rtb/&sh=582353824b43) *$76.0B*''',
                          parse_mode='Markdown', reply_markup=keyboard)
+        bot.send_message(m.chat.id,
+                         '_Note: Names are clickable, press them to go to the one\'s Forbes profile_',
+                         parse_mode='Markdown')
     elif m.text.lower() == 'jeff bezos':
         bot.send_photo(m.chat.id, 'http://prntscr.com/w124x7.png')
         bot.send_message(m.chat.id,
@@ -219,7 +245,7 @@ Source of wealth *Berkshire Hathaway, Self Made*
 Self-made score, *8*
 Residence *Omaha, Nebraska*
 Citizenship *USA*
-Education *Bachelor of Arts/Science, University 
+Education *Bachelor of Arts/Science, University
 of Nebraska Lincoln; Master of Science, Columbia University*''',
                          parse_mode='Markdown')
     elif m.text.lower() == 'larry elisson':
@@ -230,7 +256,7 @@ Source of wealth *software, Self Made*
 Self-made score, *8*
 Residence *Woodside, California*
 Citizenship *USA*
-Education *Drop Out, University of Chicago; 
+Education *Drop Out, University of Chicago;
 Drop Out, University of Illinois, Urbana-Champaign*''',
                          parse_mode='Markdown')
     elif m.text.lower() == 'larry page':
@@ -241,7 +267,7 @@ Source of wealth *Google, Self Made*
 Self-made score, *8*
 Residence *Palo Alto, California*
 Citizenship *USA*
-Education *Bachelor of Arts/Science, University of Michigan; 
+Education *Bachelor of Arts/Science, University of Michigan;
 Master of Science, Stanford University*''',
                          parse_mode='Markdown')
     elif m.text.lower() == 'mukesh ambani':
@@ -251,7 +277,7 @@ Master of Science, Stanford University*''',
 Source of wealth *diversified*
 Residence *Mumbai, India*
 Citizenship *India*
-Education *Bachelor of Science in Engineering, University of Bombay; 
+Education *Bachelor of Science in Engineering, University of Bombay;
 Drop Out, Stanford University*''',
                          parse_mode='Markdown')
     elif m.text.lower() == 'sergey brin':
@@ -262,7 +288,7 @@ Source of wealth *Google, Self Made*
 Self-made score, *9*
 Residence *Los Altos, California*
 Citizenship *USA*
-Education *Master of Science, Stanford University; 
+Education *Master of Science, Stanford University;
 Bachelor of Arts/Science, University of Maryland, College Park*''',
                          parse_mode='Markdown')
 
@@ -311,7 +337,7 @@ Bachelor of Arts/Science, University of Maryland, College Park*''',
 9. *Wladimir Klitschko* $90M
 10. *Anthony Joshua* $80M''',
                          parse_mode='Markdown')
-        bot.send_message(m.chat.id, 'The ranking is primarily based on the ' 
+        bot.send_message(m.chat.id, 'The ranking is primarily based on the '
                          'net worths of players of all time.',
                          parse_mode='Markdown')
     elif m.text.lower() == 'football':
@@ -327,7 +353,7 @@ Bachelor of Arts/Science, University of Maryland, College Park*''',
 9. *Robert Lewandowski, Bayern M.* $28M
 10. *David de Gea, Manchester United* $27M''',
                          parse_mode='Markdown')
-        bot.send_message(m.chat.id, 'The ranking is primarily based on the' 
+        bot.send_message(m.chat.id, 'The ranking is primarily based on the'
                          'players\' salaries paid by their clubs, '
                          'not including external contracts and business projects.',
                          parse_mode='Markdown')
@@ -344,7 +370,7 @@ Bachelor of Arts/Science, University of Maryland, College Park*''',
 9. *Jordan Spieth* $100M
 10. *Ernie Els* $85M''',
                          parse_mode='Markdown')
-        bot.send_message(m.chat.id, 'The ranking is primarily based on the ' 
+        bot.send_message(m.chat.id, 'The ranking is primarily based on the '
                          'net worths of players of all time.',
                          parse_mode='Markdown')
     elif m.text.lower() == 'basketball':
@@ -360,7 +386,7 @@ Bachelor of Arts/Science, University of Maryland, College Park*''',
 9. *Kevin Garnett* $190M
 10. *Grant Hill* $180M''',
                          parse_mode='Markdown')
-        bot.send_message(m.chat.id, 'The ranking is primarily based on the ' 
+        bot.send_message(m.chat.id, 'The ranking is primarily based on the '
                          'net worths of players.',
                          parse_mode='Markdown')
 
